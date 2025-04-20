@@ -1,103 +1,138 @@
-import Image from "next/image";
+'use client' // This marks the file as a Client Component
+import Link from 'next/link'
+import { useState } from 'react'
+import { Card, CardContent } from '@/app/components/ui/card'
+import { Button } from '@/app/components/ui/button'
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    alert(
+      'Merci pour votre message ! (fonctionnalité à intégrer avec un service réel)'
+    )
+  }
+
+  return (
+    <main className="p-6 max-w-4xl mx-auto space-y-10 text-gray-800 dark:text-gray-100 dark:bg-gray-900 bg-white transition-colors duration-300">
+      <section className="text-center">
+        <h1 className="text-4xl font-bold text-purple-900 dark:text-purple-300">
+          Akim Ayena Soule Amidou
+        </h1>
+        <p className="text-lg mt-2">Développeur Frontend React / Next.js</p>
+        <p className="text-md">Autonome, rigoureux et orienté produit</p>
+        <div className="mt-4 flex justify-center space-x-4">
+          <Button asChild>
+            <Link href="#projects">Projets</Link>
+          </Button>
+          <Button
+            variant="outline"
+            asChild
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <Link
+              href="/cv.pdf"
+              target="_blank"
+            >
+              Télécharger CV
+            </Link>
+          </Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </section>
+
+      <section
+        id="projects"
+        className="space-y-6"
+      >
+        <h2 className="text-2xl font-semibold">🌟 Projets</h2>
+
+        <Card>
+          <CardContent className="p-4">
+            <h3 className="text-xl font-bold">TM – Task Manager App</h3>
+            <p>
+              App React Native de gestion de tâches avec authentification,
+              multi-langue (next-intl), édition de tâches, animations, et
+              notifications.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-4">
+            <h3 className="text-xl font-bold">SaaS MIC&Co</h3>
+            <p>
+              Application web interne avec Next.js, Tailwind, SSR/SSG, design
+              system, et internationalisation.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-4">
+            <h3 className="text-xl font-bold">Système Hotech</h3>
+            <p>
+              Développement de modules de calendrier et assistant vocal.
+              Réduction des bugs de 75 % et encadrement de 7 développeurs.
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">💡 À propos</h2>
+        <p>
+          Développeur frontend passionné, je conçois des interfaces performantes
+          et élégantes avec React, Next.js, TypeScript et Tailwind CSS. J’aime
+          contribuer à des produits ambitieux et collaborer dans des équipes
+          réduites, agiles, et ultra-communiquantes. Je m’investis autant dans
+          la qualité du code que dans l’expérience utilisateur.
+        </p>
+      </section>
+
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold">📬 Contact</h2>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+          <input
+            className="w-full p-2 rounded border dark:border-gray-700 bg-gray-100 dark:bg-gray-800"
+            type="text"
+            name="name"
+            placeholder="Votre nom"
+            value={form.name}
+            onChange={handleChange}
+            required
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <input
+            className="w-full p-2 rounded border dark:border-gray-700 bg-gray-100 dark:bg-gray-800"
+            type="email"
+            name="email"
+            placeholder="Votre email"
+            value={form.email}
+            onChange={handleChange}
+            required
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+          <textarea
+            className="w-full p-2 rounded border dark:border-gray-700 bg-gray-100 dark:bg-gray-800"
+            name="message"
+            placeholder="Votre message"
+            rows={4}
+            value={form.message}
+            onChange={handleChange}
+            required
+          ></textarea>
+          <Button type="submit">Envoyer</Button>
+        </form>
+        <p>💻 github.com/akimayena</p>
+        <p>📍 Cotonou, Bénin</p>
+      </section>
+    </main>
+  )
 }
