@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export function Header() {
   return (
-    <div className="flex items-center justify-between py-8 mx-10">
+    <div className="flex items-center justify-between py-4 mx-10">
       <Link href="/">
         <Image
           width={50}
@@ -14,7 +14,7 @@ export function Header() {
           className="rounded-full"
         />
       </Link>
-      <div className="flex space-x-2">
+      <div className="flex space-x-2 gap-4">
         {[
           { href: '/blog', label: 'Blog' },
           { href: '#contact', label: 'Contact' },
@@ -23,7 +23,7 @@ export function Header() {
           <Link
             key={item.href}
             href={item.href}
-            className="hover:text-purple-900 hover:underline hover:underline-offset-8 hover:font-bold transition"
+            className="font-sans text-[#215D82] hover:text-[#215D82] hover:underline hover:underline-offset-8 transition"
           >
             {item.label}
           </Link>

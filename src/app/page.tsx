@@ -1,10 +1,11 @@
 'use client' // This marks the file as a Client Component
-import Link from 'next/link'
 import { useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+
+import myphoto from '../../public/maphoto.jpg'
 import { Button } from '@/app/components/ui/button'
 import { Project } from './components/project'
-import { Footer } from './components/footer'
-import { Header } from './components/header'
 
 export default function Home() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -23,15 +24,26 @@ export default function Home() {
   }
 
   return (
-    <main className="p-6 max-w-4xl mx-auto space-y-10 text-gray-800 dark:text-gray-100 dark:bg-gray-900 bg-white transition-colors duration-300">
-      <section className="text-center">
-        <h1 className="text-4xl font-bold text-purple-900 dark:text-purple-300">
-          Akim Ayena Soule Amidou
-        </h1>
-        <p className="text-lg mt-2">
-          Développeur Full-Stack -- NodeJS | PHP | Python | Angular | React |
-          Next.js
-        </p>
+    <>
+      {/* HERO SECTION */}
+      <section className="relative flex flex-col justify-center items-center min-h-screen w-full bg-gradient-to-b from-purple-400 dark:from-gray-900 to-white dark:to-gray-900 text-center overflow-hidden">
+        <div className="flex flex-col gap-2 items-center justify-center sm:flex-row sm:gap-6 sm:py-4">
+          <Image
+            className="h-24 w-24 rounded-full"
+            src={myphoto}
+            alt="my pic"
+          />
+          <div className="space-y-2 text-center sm:text-left">
+            <div className="space-y-0.5">
+              <p className="text-lg font-semibold text-purple-900 dark:text-purple-300">
+                Akim Ayena Soule Amidou
+              </p>
+              <p className="font-medium text-gray-500">
+                Développeur Full-Stack web-mobile
+              </p>
+            </div>
+          </div>
+        </div>
         <p className="text-md">Autonome, rigoureux et orienté produit</p>
         <div className="mt-4 flex justify-center space-x-4">
           <Button asChild>
@@ -49,65 +61,92 @@ export default function Home() {
             </Link>
           </Button>
         </div>
-      </section>
-
-      <Project />
-
-      <section
-        id="about"
-        className="space-y-4"
-      >
-        <h2 className="text-2xl font-semibold">💡 À propos</h2>
-        <p>
-          Développeur frontend passionné, je conçois des interfaces performantes
-          et élégantes avec React, Next.js, TypeScript et Tailwind CSS. J’aime
-          contribuer à des produits ambitieux et collaborer dans des équipes
-          réduites, agiles, et ultra-communiquantes. Je m’investis autant dans
-          la qualité du code que dans l’expérience utilisateur.
-        </p>
-      </section>
-
-      <section
-        id="contact"
-        className="space-y-6"
-      >
-        <h2 className="text-2xl font-semibold">📬 Contact</h2>
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
+        {/* Chevron Down */}
+        <Link
+          href="#about"
+          className="absolute left-1/2 -translate-x-1/2 bottom-20 animate-bounce text-purple-700 dark:text-purple-300"
+          aria-label="Scroll to about section"
         >
-          <input
-            className="w-full p-2 rounded border dark:border-gray-700 bg-gray-100 dark:bg-gray-800"
-            type="text"
-            name="name"
-            placeholder="Votre nom"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-          <input
-            className="w-full p-2 rounded border dark:border-gray-700 bg-gray-100 dark:bg-gray-800"
-            type="email"
-            name="email"
-            placeholder="Votre email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-          <textarea
-            className="w-full p-2 rounded border dark:border-gray-700 bg-gray-100 dark:bg-gray-800"
-            name="message"
-            placeholder="Votre message"
-            rows={4}
-            value={form.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-          <Button type="submit">Envoyer</Button>
-        </form>
-        <p>💻 github.com/akimayena</p>
-        <p>📍 Cotonou, Bénin</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-10 w-10 mx-auto"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </Link>
       </section>
-    </main>
+
+      {/* MAIN CONTENT */}
+      <main className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+        <div className="max-w-4xl mx-auto space-y-10">
+          <Project />
+
+          <section
+            id="about"
+            className="space-y-4"
+          >
+            <h2 className="text-2xl font-semibold">💡 À propos</h2>
+            <p>
+              Développeur frontend passionné, je conçois des interfaces
+              performantes et élégantes avec React, Next.js, TypeScript et
+              Tailwind CSS. J’aime contribuer à des produits ambitieux et
+              collaborer dans des équipes réduites, agiles, et
+              ultra-communiquantes. Je m’investis autant dans la qualité du code
+              que dans l’expérience utilisateur.
+            </p>
+          </section>
+
+          <section
+            id="contact"
+            className="space-y-6"
+          >
+            <h2 className="text-2xl font-semibold">📬 Contact</h2>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
+              <input
+                className="w-full p-2 rounded border border-purple-400 dark:border-gray-700 bg-gray-100 dark:bg-gray-800"
+                type="text"
+                name="name"
+                placeholder="Votre nom"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+              <input
+                className="w-full p-2 rounded border border-purple-400 dark:border-gray-700 bg-gray-100 dark:bg-gray-800"
+                type="email"
+                name="email"
+                placeholder="Votre email"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+              <textarea
+                className="w-full p-2 rounded border border-purple-400 dark:border-gray-700 bg-gray-100 dark:bg-gray-800"
+                name="message"
+                placeholder="Votre message"
+                rows={4}
+                value={form.message}
+                onChange={handleChange}
+                required
+              ></textarea>
+              <Button type="submit">Envoyer</Button>
+            </form>
+            <p>💻 github.com/akimayena</p>
+            <p>📍 Cotonou, Bénin</p>
+          </section>
+        </div>
+      </main>
+    </>
   )
 }
