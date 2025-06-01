@@ -6,7 +6,7 @@ import styles from '../../styles/blog.module.css'
 const BlogList = () => {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
 
   interface Post {
     id?: string
@@ -24,8 +24,12 @@ const BlogList = () => {
         }
         const data = await response.json()
         setPosts(data)
-      } catch (error: any) {
-        setError(error?.message)
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message)
+        } else {
+          setError('An unknown error occurred')
+        }
       } finally {
         setLoading(false)
       }
