@@ -67,7 +67,10 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="space-y-6">
+      <section
+        id="contact"
+        className="space-y-6"
+      >
         <h2 className="text-2xl font-semibold">📬 Contact</h2>
         <form
           onSubmit={handleSubmit}
