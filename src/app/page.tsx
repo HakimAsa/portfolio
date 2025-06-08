@@ -6,6 +6,7 @@ import Image from 'next/image'
 import myphoto from '../../public/maphoto.jpg'
 import { Button } from '@/app/components/ui/button'
 import { Project } from './components/project'
+import AvatarWithAnimatedBorder from './components/AvatarWithAnimatedBorder'
 
 export default function Home() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -28,11 +29,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative flex flex-col justify-center items-center min-h-screen w-full bg-gradient-to-b from-purple-400 dark:from-gray-900 to-white dark:to-gray-900 text-center overflow-hidden">
         <div className="flex flex-col gap-2 items-center justify-center sm:flex-row sm:gap-6 sm:py-4">
-          <Image
-            className="h-24 w-24 rounded-full"
-            src={myphoto}
-            alt="my pic"
-          />
+          <AvatarWithAnimatedBorder />
           <div className="space-y-2 text-center sm:text-left">
             <div className="space-y-0.5">
               <p className="text-lg font-semibold text-purple-900 dark:text-purple-300">
