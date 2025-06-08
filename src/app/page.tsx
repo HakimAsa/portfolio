@@ -1,9 +1,7 @@
 'use client' // This marks the file as a Client Component
 import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
-import myphoto from '../../public/maphoto.jpg'
 import { Button } from '@/app/components/ui/button'
 import { Project } from './components/project'
 import AvatarWithAnimatedBorder from './components/AvatarWithAnimatedBorder'
