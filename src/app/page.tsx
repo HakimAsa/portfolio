@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { Button } from '@/app/components/ui/button'
 import { Project } from './components/project'
-import AvatarWithAnimatedBorder from './components/AvatarWithAnimatedBorder'
+import AvatarWithAnimatedBorder from './components/avatarWithAnimatedBorder'
 
 export default function Home() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
